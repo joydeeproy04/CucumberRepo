@@ -24,12 +24,9 @@ public class Steps {
 	@Given("^Open the Firefox and launch the application$")
 	public void open_the_Firefox_and_launch_the_application() throws Throwable {
 		System.out.println("This Step open the Chrome and launch the application.");
-		String homePath = System.getProperty("user.dir");
-		File file = new File(homePath + "//Drivers//chromedriver_2.38.exe");
+		File file = new File("/usr/bin/chromedriver");
 		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-		
-		// System.setProperty("webdriver.gecko.driver", "C://Users//joydeepr938//Desktop//Backup//Cucumber_Workspace//CucumberWithSelenium//Driver//geckodriver-v0.16.1.exe");
-		
+		chromeOptions.addArguments("--no-sandbox");
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("headless");				
 				
@@ -45,7 +42,7 @@ public class Steps {
 	public void enter_the_and(String uname, String pass) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 		System.out.println("This step enter the Username and Password on the login page.");
-		driver.findElement(By.name("uid")).sendKeys("username12");							
+		driver.findElement(By.name("uid")).sendKeys("username12");	 						
 		driver.findElement(By.name("password")).sendKeys("password12");
 		Thread.sleep(5000);
 	}
