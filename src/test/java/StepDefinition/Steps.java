@@ -24,18 +24,17 @@ public class Steps {
 	@Given("^Open the Firefox and launch the application$")
 	public void open_the_Firefox_and_launch_the_application() throws Throwable {
 		System.out.println("This Step open the Chrome and launch the application.");
-		String homePath = System.getProperty("user.dir");
-		File file = new File(homePath + "//Drivers//chromedriver_2.38.exe");
+		File file = new File("/usr/bin/chromedriver");
+		
 		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 		
 		// System.setProperty("webdriver.gecko.driver", "C://Users//joydeepr938//Desktop//Backup//Cucumber_Workspace//CucumberWithSelenium//Driver//geckodriver-v0.16.1.exe");
 		
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("headless");				
-				
+		options.addArguments("headless");		
+		options.addArguments("--no-sandbox");				
 		driver= new ChromeDriver(options);
-		// driver= new ChromeDriver();
-		
+		// driver= new ChromeDriver();		
 		driver.manage().window().maximize();
 		driver.get("http://demo.guru99.com/v4");	
 		
